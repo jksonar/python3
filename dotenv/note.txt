@@ -1,0 +1,77 @@
+If you encrypt your `.env` file using a tool like `dotenv-vault`, you need to decrypt it before loading the variables into your Python application. Here's how you can decrypt and use it:
+
+---
+
+### **1. Encrypt the `.env` File**
+Using `dotenv-vault` or similar tools:
+```bash
+dotenv-vault encrypt .env
+```
+
+This will generate an encrypted version of your `.env` file, typically named `.env.enc`.
+
+---
+
+### **2. Decrypt the `.env` File**
+You can decrypt it temporarily in your code or use `dotenv-vault` for decryption.
+
+#### **Option 1: Temporary Decryption Using `dotenv-vault`**
+```bash
+dotenv-vault decrypt
+```
+This command will temporarily decrypt the `.env.enc` file into a usable `.env` file. You can load this decrypted `.env` file in Python as usual.
+
+#### **Option 2: Decrypt on the Fly in Code**
+If the decryption process is automated, the tool or a custom script can decrypt the file and provide its contents to your application dynamically.
+
+Here’s an example of how you might handle decryption programmatically (assuming the encrypted `.env.enc` uses base64 encoding or a similar scheme):
+
+---
+
+### **3. Example Code for Decrypting `.env.enc` and Loading Variables**
+
+#### **Custom Decryption and Loading**
+```python
+from cryptography.fernet import Fernet
+from dotenv import dotenv_values
+import os
+
+# Key to decrypt the file
+DECRYPTION_KEY = b"your-encryption-key"  # Replace with your actual key
+
+def decrypt_env_file(encrypted_file, decryption_key):
+    with open(encrypted_file, "rb") as f:
+        encrypted_data = f.read()
+    cipher = Fernet(decryption_key)
+    decrypted_data = cipher.decrypt(encrypted_data)
+    return decrypted_data.decode("utf-8")
+
+# Path to encrypted file
+encrypted_env_file = ".env.enc"
+
+# Decrypt and load variables
+decrypted_content = decrypt_env_file(encrypted_env_file, DECRYPTION_KEY)
+env_vars = dict(line.split("=", 1) for line in decrypted_content.splitlines() if "=" in line)
+
+# Set environment variables in os.environ
+for key, value in env_vars.items():
+    os.environ[key] = value
+
+# Access variables in your code
+print(os.getenv("API_KEY"))
+```
+
+---
+
+### **4. Best Practices**
+- **Store the decryption key securely:** Use a secrets manager like AWS Secrets Manager, Azure Key Vault, or HashiCorp Vault.
+- **Automate decryption securely:** Use tools like `dotenv-vault` with an API key or access token for secure on-the-fly decryption.
+- **Avoid storing decrypted `.env` on disk:** Always decrypt in-memory to avoid exposing sensitive data.
+
+---
+
+### **5. Tools That Support `.env` Encryption**
+- **[dotenv-vault](https://www.dotenv.org/):** Secure encryption and decryption for `.env` files.
+- **Custom Tools or Scripts:** If you create your own encryption logic (like in the example above), ensure strong encryption algorithms like AES-256.
+
+Let me know if you need additional guidance!
