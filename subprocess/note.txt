@@ -1,0 +1,6 @@
+Tips for Using Subprocess Safely
+
+    Avoid shell=True unless necessary: It can expose your code to shell injection vulnerabilities.
+    Use check=True: Automatically raise an error if the command fails.
+    Handle timeouts: Prevent hanging processes with the timeout argument.
+    Use capture_output: Capture both stdout and stderr without writing to the console.

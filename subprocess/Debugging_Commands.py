@@ -1,4 +1,7 @@
 # Debugging Commands
+
+# To debug subprocess calls, print the args, stdout, and stderr fields of the CompletedProcess object returned by subprocess.run()
+
 import subprocess
 
 result = subprocess.run(["ls", "nonexistent_file"], capture_output=True, text=True)
