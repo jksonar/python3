@@ -1,0 +1,14 @@
+Common Rsync Options
+
+    -a: Archive mode (preserves permissions, symbolic links, etc.)
+    -v: Verbose output
+    -z: Compress data during transfer
+    --delete: Remove files at the destination not present in the source
+    --exclude: Exclude specific files or patterns
+    --dry-run: Simulate the operation without making any changes
+    -e "ssh": Use SSH for remote sync
+
+Custom Rsync Library
+
+If you prefer a Python-native library, you can check out rsync-python, a Python wrapper for librsync. Install it with:
+pip install rsync-python
