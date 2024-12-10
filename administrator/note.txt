@@ -1,38 +1,88 @@
 following is the system admin modules 
-import platform
-import shutil
-import sys
-import argparse
-import elevate 
-import os
-import subprocess
-import datetime
-import getpass
-import telnetlib
-import time
+from bs4 import BeautifulSoup
+from collections import Counter
+from configparser import ConfigParser
+from dotenv import load_dotenv 
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from fabric.api import *
+from ftplib import FTP
+from matplotlib import style
+from netmiko import ConnectHandler
+from numpy import *
+from openpyxl import Workbook
+from os import stat, remove
+from plotly import tools
+from plotly.graph_objs import Scatter, Layout
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
 from sh import rsync
-import os.path
-import glob
-import re
+from shutil import make_archive
+import argparse
+import arithmetic
+import calendar 
+import csv
+import datetime
+import elevate 
+import email.utils
+import fabric 
 import getopt
+import getpass
+import glob
+import http.client
+import if_example
+import imaplib
+import json
+import logging
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import MySQLdb as mdb
+import numpy as np
+import openpyxl
+import os
+import os.path
+import pandas as pd
+import pandas
+import paramiko
+import pathlib
+import platform
+import plotly
+import plotly.graph_objs as go
+import poplib
+import pprint
+import psutil
+import pyAesCrypt
+import pyPdf
+import PyPDF2
+import random
+import re
+import requests
+import resource
+import sample
+import shutil
+import signal
+import smtplib
+import socket
+import sqlite3
 import stat
 import string
-from configparser import ConfigParser
-import resource
-import paramiko
-import logging
-import warnings
-import smtplib
+import subprocess
+import sys
+import tarfile
+import telnetlib
 import tempfile
-import fabric 
-import csv
-import psutil
-import pathlib
+import textwrap
+import time
+import timeit
+import unittest
+import urllib.request
+import warnings
+import webbrowser
+import xlrd
+import zeep
 import zipfile 
-import email.utils
-from email.mime.text import MIMEText
-import json
-from dotenv import load_dotenv 
-import requests
-import calendar 
-import pandas
+import zipfile
+prg_setup = "from math import sqrt"
