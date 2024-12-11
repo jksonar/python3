@@ -8,3 +8,42 @@ Function	Description
 glob.glob(pattern)	Returns a list of files matching the pattern.
 glob.iglob(pattern)	Returns an iterator of files matching the pattern.
 glob.escape(path)	Escapes special characters in a path.
+
+
+For older versions of python:
+
+The most simple method is to use
+os.walk()
+
+as it is specifically designed and optimized to allow recursive browsing of a directory tree. Or we can also use
+os.listdir()
+
+to get all the files in directory and subdirectories and then filter out.
+
+# Python program to find files
+# recursively using Python
+
+
+import os
+ 
+# Using os.walk()
+for dirpath, dirs, files in os.walk('src'): 
+  for filename in files:
+    fname = os.path.join(dirpath,filename)
+    if fname.endswith('.c'):
+      print(fname)
+ 
+"""
+Or
+We can also use fnmatch.filter()
+to filter out results.
+"""
+for dirpath, dirs, files in os.walk('src'): 
+  for filename in fnmatch.filter(files, '*.c'):
+    print(os.path.join(dirpath, filename))
+ 
+# Using os.listdir()
+path = "src"
+dir_list = os.listdir(path)
+for filename in fnmatch.filter(dir_list,'*.c'):
+  print(os.path.join(dirpath, filename))
