@@ -1,0 +1,10 @@
+The glob module in Python is used to find files and directories whose names match a specified pattern. It supports Unix-style pathname pattern matching (e.g., *.txt, file?.py).
+
+Here's a complete guide with examples
+
+
+Key Functions
+Function	Description
+glob.glob(pattern)	Returns a list of files matching the pattern.
+glob.iglob(pattern)	Returns an iterator of files matching the pattern.
+glob.escape(path)	Escapes special characters in a path.
