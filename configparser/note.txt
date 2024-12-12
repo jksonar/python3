@@ -1,0 +1,15 @@
+The configparser module in Python is used for working with configuration files. 
+These files are often in .ini format, consisting of sections, keys, and values. 
+This module allows you to read, write, and modify such files easily.
+
+Key Methods and Functions
+Method	Description
+config.read(filename)	Reads a configuration file.
+config.sections()	Lists all sections (excluding DEFAULT).
+config.add_section(name)	Adds a new section.
+config.has_section(name)	Checks if a section exists.
+config.has_option(section, option)	Checks if an option exists in a section.
+config.get(section, option)	Retrieves the value of an option.
+config.set(section, option, value)	Sets the value of an option.
+config.remove_section(name)	Removes a section.
+config.remove_option(section, option)	Removes an option from a section.
