@@ -6,25 +6,39 @@
 
 import configparser
 import os
-import subprocess
+from subprocess import Popen, PIPE
+import time
+import logging
+from datetime import date
+import calendar
+from pathlib import Path
+from subprocess import Popen, PIPE
+from zipfile import ZipFile
+import shutil
 
 config = configparser.ConfigParser()
 FilePath = '/'.join((os.path.abspath(__file__).replace('\\', '/')).split('/')[:-1])
 iniFileName = os.path.join(FilePath, 'db_backup.ini')
 config.read(iniFileName)
 
-host = config['DEFAULT']['host']
-port = config['DEFAULT']['port']
-user = config['DEFAULT']['user']
-os.environ["PGPASSWORD"] = config['DEFAULT']['password']
-database = config['DEFAULT']['database']
-backup_folder_path = config['DEFAULT']['backup_folder_path']
+DATABASE = config['DEFAULT']['DATABASE']
+HOST = config['DEFAULT']['HOST']
+PORT = config['DEFAULT']['PORT']
+USER = config['DEFAULT']['USER']
+BACKUP_DIR = config['DEFAULT']['BACKUP_DIR']
+DATE_UNIQ = time.strftime("%Y_%m_%d_%H_%M")
+LOG_DIR = config['DEFAULT']['LOG_DIR']
+LOG_FILE_NAME = LOG_DIR / f"dbscript_{DATE_UNIQ}.log"
+DATABASE_FILE_NAME = os.path.join(BACKUP_DIR,f"{DATABASE}_{DATE_UNIQ}.sql")
+logging.basicConfig(filename=LOG_FILE_NAME, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-if 'postgres' == config['DEFAULT']['db_engin']:
-    result = subprocess.run(["pg_dump", "-h", host, "--user", user, "-d", database, "-f", os.path.join(backup_folder_path,"emp.sql")], capture_output=True, text=True)
+if 'postgres' == config['DEFAULT']['DB_ENGIN']:
+    os.environ["PGPASSWORD"] = config['DEFAULT']['PASSWORD']
+    result = Popen(["pg_dump", "-h", HOST, "-U", USER, "-d", DATABASE, "-f", DATABASE_FILE_NAME],stdout=PIPE, stderr=PIPE)
+    stdout, stderr = result.communicate()
 
 # if condition for mysql command
-if 'mysql' == config['DEFAULT']['db_engin']:
+if 'mysql' == config['DEFAULT']['DB_ENGIN']:
     pass
 
 #if condition for copy backup to remote using ssh 
