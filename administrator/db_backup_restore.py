@@ -5,8 +5,20 @@
 # 5. remove old backup files base on retention from remote and local
 
 import configparser
+import os
+import subprocess
 
 config = configparser.ConfigParser()
-config.read('D:\\DATA\\python3\\administrator\\db_backup.ini')
+FilePath = '/'.join((os.path.abspath(__file__).replace('\\', '/')).split('/')[:-1])
+iniFileName = os.path.join(FilePath, 'db_backup.ini')
+config.read(iniFileName)
 
+host = config['DEFAULT']['host']
+port = config['DEFAULT']['port']
+user = config['DEFAULT']['user']
+os.environ["PGPASSWORD"] = config['DEFAULT']['password']
+database = config['DEFAULT']['database']
 
+result = subprocess.run(["pg_dump", "-h", host, "--user", user, "-d", database, "-f", "emp.sql"], capture_output=True, text=True)
+print("Output:", result.stdout)
+print("Error:", result.stderr)
