@@ -18,7 +18,15 @@ port = config['DEFAULT']['port']
 user = config['DEFAULT']['user']
 os.environ["PGPASSWORD"] = config['DEFAULT']['password']
 database = config['DEFAULT']['database']
+backup_folder_path = config['DEFAULT']['backup_folder_path']
 
-result = subprocess.run(["pg_dump", "-h", host, "--user", user, "-d", database, "-f", "emp.sql"], capture_output=True, text=True)
-print("Output:", result.stdout)
-print("Error:", result.stderr)
+if 'postgres' == config['DEFAULT']['db_engin']:
+    result = subprocess.run(["pg_dump", "-h", host, "--user", user, "-d", database, "-f", os.path.join(backup_folder_path,"emp.sql")], capture_output=True, text=True)
+
+# if condition for mysql command
+if 'mysql' == config['DEFAULT']['db_engin']:
+    pass
+
+#if condition for copy backup to remote using ssh 
+if config['DEFAULT']['copy_remote_ssh']:
+    pass
