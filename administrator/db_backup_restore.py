@@ -85,7 +85,7 @@ def backup_database():
     try:
         if 'postgres' == config['DEFAULT']['DB_ENGIN']:
             os.environ["PGPASSWORD"] = config['DEFAULT']['PASSWORD']
-            result = Popen(["pg_dump", "-h", HOST, "-U", USER, "-d", DATABASE, "-f", DATABASE_FILE_NAME],stdout=PIPE, stderr=PIPE)
+            result = Popen(["pg_dump", "-h", HOST,"-p",PORT, "-U", USER, "-d", DATABASE, "-f", DATABASE_FILE_NAME],stdout=PIPE, stderr=PIPE)
             stdout, stderr = result.communicate()
 
         elif 'mysql' == config['DEFAULT']['DB_ENGIN']:
