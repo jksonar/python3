@@ -86,3 +86,7 @@ import zeep
 import zipfile 
 import zipfile
 prg_setup = "from math import sqrt"
+
+websites
+https://www.pythoncheatsheet.org/cheatsheet/basics
+https://github.com/wilfredinni/python-cheatsheet.git
