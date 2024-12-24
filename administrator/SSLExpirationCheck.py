@@ -3,9 +3,10 @@
 import ssl
 import socket
 from datetime import datetime, timezone
+import certifi
 
 def get_ssl_expiry(domain):
-    context = ssl.create_default_context()
+    context = ssl.create_default_context(cafile=certifi.where())
     
     try:
         with socket.create_connection((domain, 443)) as sock:
@@ -13,13 +14,11 @@ def get_ssl_expiry(domain):
                 cert = ssock.getpeercert()
                 expiry_date_str = cert['notAfter']
                 expiry_date = datetime.strptime(expiry_date_str, '%b %d %H:%M:%S %Y %Z')
-                
-                # Make expiry_date timezone-aware (UTC)
                 expiry_date = expiry_date.replace(tzinfo=timezone.utc)
-                
                 return expiry_date
     except Exception as e:
-        return f"Error: {e}"
+        print(f"Error retrieving SSL for {domain}: {e}")
+        return None
 
 def check_ssl_expiry(domain):
     expiry_date = get_ssl_expiry(domain)
