@@ -106,7 +106,7 @@ def remote_cleanup(config):
             username=config['REMOTE']['USER'],
             password=config['REMOTE']['PASSWORD']
         )
-        retention_days = config['retention']['RETENTION_DAYS']
+        retention_days = config['RETENTION']['RETENTION_DAYS']
         cmd = f"find {config['REMOTE']['BACKUP_DIR']} -type f -mtime +{retention_days} -name '*.zip' -exec rm {{}} \\;"
         stdin, stdout, stderr = ssh.exec_command(cmd)
         stdout.channel.recv_exit_status()
@@ -169,8 +169,8 @@ def main():
             create_zip(backup_file_path, weekly_backup_dir, is_weekly=is_weekly)
             transfer_to_remote(config, f"{backup_file_path}.zip")
 
-        delete_old_files(backup_dir, int(config['retention']['RETENTION_DAYS']))
-        delete_old_files(weekly_backup_dir, int(config['retention']['WEEKLY_RETENTION_DAYS']))
+        delete_old_files(backup_dir, int(config['RETENTION']['RETENTION_DAYS']))
+        delete_old_files(weekly_backup_dir, int(config['RETENTION']['WEEKLY_RETENTION_DAYS']))
         remote_cleanup(config)
 
         logging.info("Backup process completed successfully.")
