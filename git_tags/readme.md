@@ -100,9 +100,9 @@ git checkout -b <branch_name> <tag_name>
 By following these practices, you'll have a well-organized repository with clear and meaningful tags, aiding in version control and collaboration.
 
 
-=========================================================================================================================
-   add old commit to git tag 
-=========================================================================================================================
+---
+### **Add Old Commit To GIT tag**
+
 To create a tag for an older commit in Git, you can specify the commit hash when creating the tag. Here's how:
 
 ### **Steps to Tag an Old Commit**
