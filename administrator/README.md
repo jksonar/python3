@@ -1,96 +1,95 @@
-following is the system admin modules 
-from bs4 import BeautifulSoup
-from collections import Counter
-from configparser import ConfigParser
-from dotenv import load_dotenv 
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from fabric.api import *
-from ftplib import FTP
-from matplotlib import style
-from netmiko import ConnectHandler
-from numpy import *
-from openpyxl import Workbook
-from os import stat, remove
-from plotly import tools
-from plotly.graph_objs import Scatter, Layout
-from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
-from sh import rsync
-from shutil import make_archive
-import argparse
-import arithmetic
-import calendar 
-import csv
-import datetime
-import elevate 
-import email.utils
-import fabric 
-import getopt
-import getpass
-import glob
-import http.client
-import if_example
-import imaplib
-import json
-import logging
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
-import MySQLdb as mdb
-import numpy as np
-import openpyxl
-import os
-import os.path
-import pandas as pd
-import pandas
-import paramiko
-import pathlib
-import platform
-import plotly
-import plotly.graph_objs as go
-import poplib
-import pprint
-import psutil
-import pyAesCrypt
-import pyPdf
-import PyPDF2
-import random
-import re
-import requests
-import resource
-import sample
-import shutil
-import signal
-import smtplib
-import socket
-import sqlite3
-import stat
-import string
-import subprocess
-import sys
-import tarfile
-import telnetlib
-import tempfile
-import textwrap
-import time
-import timeit
-import unittest
-import urllib.request
-import warnings
-import webbrowser
-import xlrd
-import zeep
-import zipfile 
-import zipfile
-prg_setup = "from math import sqrt"
-
-websites
-https://www.pythoncheatsheet.org/cheatsheet/basics
-https://github.com/wilfredinni/python-cheatsheet.git
-
+### **Following Is The System Admin Modules **
+1. from bs4 import BeautifulSoup
+2. from collections import Counter
+3. from configparser import ConfigParser
+4. from dotenv import load_dotenv 
+5. from email.mime.image import MIMEImage
+6. from email.mime.multipart import MIMEMultipart
+7. from email.mime.text import MIMEText
+8. from fabric.api import *
+9. from ftplib import FTP
+10. from matplotlib import style
+11. from netmiko import ConnectHandler
+12. from numpy import *
+13. from openpyxl import Workbook
+14. from os import stat, remove
+15. from plotly import tools
+16. from plotly.graph_objs import Scatter, Layout
+17. from PyQt5.QtCore import pyqtSlot
+18. from PyQt5.QtGui import QIcon
+19. from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QWidget
+20. from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+21. from sh import rsync
+22. from shutil import make_archive
+23. import argparse
+24. import arithmetic
+25. import calendar 
+26. import csv
+27. import datetime
+28. import elevate 
+29. import email.utils
+30. import fabric 
+31. import getopt
+32. import getpass
+33. import glob
+34. import http.client
+35. import if_example
+36. import imaplib
+37. import json
+38. import logging
+39. import matplotlib.image as mpimg
+40. import matplotlib.pyplot as plt
+41. import MySQLdb as mdb
+42. import numpy as np
+43. import openpyxl
+44. import os
+45. import os.path
+46. import pandas as pd
+47. import pandas
+48. import paramiko
+49. import pathlib
+50. import platform
+51. import plotly
+52. import plotly.graph_objs as go
+53. import poplib
+54. import pprint
+55. import psutil
+56. import pyAesCrypt
+57. import pyPdf
+58. import PyPDF2
+59. import random
+60. import re
+61. import requests
+62. import resource
+63. import sample
+64. import shutil
+65. import signal
+66. import smtplib
+67. import socket
+68. import sqlite3
+69. import stat
+70. import string
+71. import subprocess
+72. import sys
+73. import tarfile
+74. import telnetlib
+75. import tempfile
+76. import textwrap
+77. import time
+78. import timeit
+79. import unittest
+80. import urllib.request
+81. import warnings
+82. import webbrowser
+83. import xlrd
+84. import zeep
+85. import zipfile
+86. from math import sqrt
+---
+### **websites**
+1. [www.pythoncheatsheet.org](https://www.pythoncheatsheet.org/cheatsheet/basics)
+2. [github.com wilfredinni] (https://github.com/wilfredinni/python-cheatsheet.git)
+---
 Here's a list of essential Python modules that are useful for Linux system administration tasks:
 
 ### 1. **OS and File Management**  
@@ -153,5 +152,3 @@ Here's a list of essential Python modules that are useful for Linux system admin
 - **redis** – In-memory data structure for caching and queuing.  
 
 ---
-
-Would you like a sample script using these modules for admin tasks like user management, backups, or monitoring?
