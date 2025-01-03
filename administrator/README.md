@@ -1,4 +1,4 @@
-### **Following Is The System Admin Modules **
+### **Following Is The System Admin Modules**
 1. from bs4 import BeautifulSoup
 2. from collections import Counter
 3. from configparser import ConfigParser
