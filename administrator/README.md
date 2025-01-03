@@ -88,7 +88,7 @@
 ---
 ### **websites**
 1. [www.pythoncheatsheet.org](https://www.pythoncheatsheet.org/cheatsheet/basics)
-2. [github.com wilfredinni] (https://github.com/wilfredinni/python-cheatsheet.git)
+2. [github.com/wilfredinni] (https://github.com/wilfredinni/python-cheatsheet.git)
 ---
 Here's a list of essential Python modules that are useful for Linux system administration tasks:
 
