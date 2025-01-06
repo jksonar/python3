@@ -188,32 +188,3 @@ Example:
 git show v1.1.0
 ```
 This will display the details of the tagged commit, including the commit message and associated changes.
-
-### **Git revert to a previous tag then push to origin:master**
-
-There are 2 ways to do that
-
-## Reset the HEAD then force push to remote
-
-```bash
-$ git checkout master
-$ git pull
-$ git reset --hard tag_ABC
-$ git push --force origin master
-```
-
-## Make a new revert commit then push to remote (or create a new branch and make a PR)
-
-```bash
-$ git checkout 1.1.1
-$ git diff master > ~/diff.patch
-$ git checkout master
-$ cat ~/diff.patch | git apply
-$ git commit -am 'Rolled back to version 1.1.1'
-$ git push origin master
-```
-
-## Create new Branch form git tag
-```bash
-git checkout -b newbranch v1.0
-```
